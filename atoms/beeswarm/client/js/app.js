@@ -58,6 +58,8 @@ let radScale = d3.scaleSqrt()
 
 const maxCases = d3.max(cases.map(d => d3.max(d[1], e => e.value)));
 
+console.log(maxCases)
+
 const xScale =  d3.scaleLog()
 .domain([1, maxCases])
 .range([ posX, width ])
@@ -70,6 +72,16 @@ svg.append('line')
 .attr('x2', xScale(maxCases) + 'px')
 .attr('y2', height/2 + 'px')
 .attr('stroke', 'black')
+
+
+let ticks = [1, 10, 100, 1000];
+
+let scaleX = svg.selectAll('text')
+.data(ticks)
+.enter()
+.append('text')
+.attr('transform', d => `translate(${xScale(d)},${height/2})`)
+.text(d => d)
 
 const makeChart = () => {
 
@@ -122,7 +134,12 @@ const makeChart = () => {
 	    	else
 	    	{
 	    		clearInterval(interval)
+
+	    		simulation.stop()
 	    	}
+    	}
+    	else{
+    		simulation.stop()
     	}
 	    
 	}, 100)
