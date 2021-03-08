@@ -16,7 +16,8 @@ let cases = [];
 LAs.map((d,i) => {
 
 	let eachOne = data.sheets['LA-breakdown-cases'].filter(f => f.areaName === d);
-	let obj = eachOne.map(d => {return {date:new Date(d.date.split('/')[2], +d.date.split('/')[1] -1, d.date.split('/')[0]),value:+d.newCasesBySpecimenDateRollingRate + 1}})
+	//let obj = eachOne.map(d => {return {date:new Date(d.date.split('/')[2], +d.date.split('/')[1] -1, d.date.split('/')[0]),value:+d.newCasesBySpecimenDateRollingRate + 1}})
+	let obj = eachOne.map(d => {return {date:d.date,value:+d.newCasesBySpecimenDateRollingRate + 1}})
 	cases.push([{la:d, pop:LAsPopulation[i]}, obj])
 
 

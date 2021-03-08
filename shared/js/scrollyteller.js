@@ -12,6 +12,7 @@ class ScrollyTeller {
         this.triggerPoints = [];
         this.textBoxes = [].slice.apply(this.scrollText.querySelectorAll(".scroll-text__inner"));
         this.transparentUntilActive = config.transparentUntilActive;
+        this.callback = config.callback;
 
         this.scrollWrapper.style.height = this.textBoxes.length * 100 + "vh";
 
@@ -20,8 +21,13 @@ class ScrollyTeller {
         }
     }
 
+    gradual( f ) {
+        this.onGradualChange = f
+    }
+
     checkScroll() {
         if(this.lastScroll !== window.pageYOffset) {
+
             const bbox = this.scrollText.getBoundingClientRect();
     
             if(!supportsSticky) {
@@ -43,6 +49,12 @@ class ScrollyTeller {
             if(bbox.top < (window.innerHeight*(this.triggerTop)) && bbox.bottom > window.innerHeight/2) { 
                 const i = Math.floor(Math.abs(bbox.top - (window.innerHeight*(this.triggerTop)))/bbox.height*this.textBoxes.length);
     
+                const progress = -bbox.top/(bbox.height - window.innerHeight)
+
+                if(progress >= 0) {
+                    this.onGradualChange(progress)
+                }
+
                 if(i !== this.lastI) {
                     this.lastI = i; 
                     this.doScrollAction(i);
@@ -66,9 +78,13 @@ class ScrollyTeller {
     }
 
     doScrollAction(i) {
+        console.log('paso por aqui ' + i)
+        this.callback(i)
         const trigger = this.triggerPoints.find(d => d.num === i+1);
         if(trigger) {
             trigger.do();
+
+            
         }
     }
 

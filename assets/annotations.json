@@ -1,0 +1,72 @@
+[
+ {
+   "Date": "23/03/2020",
+   "Title": "Lockdown imposed",
+   "Annotation": "Boris Johnson announced that the whole UK would enter lockdown on 23 March and warns people to \"stay at home\".",
+   "LA-marker": "",
+   "LA-annotation": ""
+ },
+ {
+   "Date": "01/06/2020",
+   "Title": "Lockdown eased and mass testing introduced",
+   "Annotation": "Lockdown measures are eased as children returned to the classroom. Meanwhile, mass testing in the community started from late May. This meant that more cases started to be officially counted in the government numbers.",
+   "LA-marker": "",
+   "LA-annotation": ""
+ },
+ {
+   "Date": "29/06/2020",
+   "Title": "Leicester lockdown",
+   "Annotation": "The first local lockdown was announced in Leicester as non-essential shops, salons, gyms and restaurants had to remain closed.",
+   "LA-marker": "Leicester",
+   "LA-annotation": "Rate at which Leicester entered local lockdown"
+ },
+ {
+   "Date": "04/07/2020",
+   "Title": "Lockdown eased further",
+   "Annotation": "Pubs were open and weddings were allowed as the government reached its final stage of lockdown easing",
+   "LA-marker": "",
+   "LA-annotation": ""
+ },
+ {
+   "Date": "31/07/2020",
+   "Title": "North-east lockdown",
+   "Annotation": "Greater Manchester and parts of West Yorkshire placed into local lockdown as cases rose in the area.",
+   "LA-marker": "Bolton,Bury,Manchester,Oldham,Rochdale,Salford,Stockport,Tameside,Trafford,Wigan,Bradford,Calderdale,Kirklees",
+   "LA-annotation": "Rate at which North-east entered local lockdown"
+ },
+ {
+   "Date": "05/11/2020",
+   "Title": "Second lockdown imposed",
+   "Annotation": "Boris Johnson imposed a new national lockdown in England to prevent a \"medical and moral disaster\".",
+   "LA-marker": "Oldham",
+   "LA-annotation": "Oldham had the highest rate in the country at this point"
+ },
+ {
+   "Date": "02/12/2020",
+   "Title": "Lockdown eased",
+   "Annotation": "Once again, lockdown was eased at the start of December.",
+   "LA-marker": "Medway",
+   "LA-annotation": "A new variant rippled across the south-east, with Medway now having the highest rate."
+ },
+ {
+   "Date": "19/12/2020",
+   "Title": "Tier 4 in south-east",
+   "Annotation": "Vast swathes of the south-east, east and all of London were placed under Tier 4, equivalent to a \"stay at home\" message.",
+   "LA-marker": "Ashford,Canterbury,Dartford,Dover,Folkestone and Hythe,Gravesham,Maidstone,Sevenoaks,Swale,Thanet,Tonbridge and Malling,Tunbridge Wells,Buckinghamshire, Berkshire,Elmbridge,Epsom and Ewell,Guildford,Mole Valley,Reigate and Banstead,Runnymede,Spelthorne,Surrey Heath,Tandridge,Waverley,Woking, Gosport, Havant, Portsmouth, Rother, Hastings,Bexley,Sutton,Ealing,Kingston upon Thames,Harrow,Merton,Brent,Barnet,Greenwich,Newham,Barking and Dagenham,Croydon,Lewisham,Tower Hamlets,Bromley,Hillingdon,Hounslow,Southwark,Richmond upon Thames,Hackney and City of London,Kensington and Chelsea,Redbridge,Havering,Enfield,Haringey,Wandsworth,Waltham Forest,Hammersmith and Fulham,Islington,Westminster,Lambeth,Camden,Bedford,Central Bedford,Milton Keynes,Luton,Peterborough, Broxbourne,Dacorum,East Hertfordshire,Hertsmere,North Hertfordshire,St Albans,Stevenage,Three Rivers,Watford,Welwyn Hatfield, Basildon,Braintree,Brentwood,Castle Point,Chelmsford,Epping Forest,Harlow,Maldon,Rochford",
+   "LA-annotation": ""
+ },
+ {
+   "Date": "04/01/2021",
+   "Title": "Third lockdown imposed",
+   "Annotation": "Once again, lockdown was imposed after a surge in coronavirus cases during the Christmas period. A new variant had also been allowed to spread from the south-east, with huge case rates seen in London.",
+   "LA-marker": "Barking and Dagenham",
+   "LA-annotation": ""
+ },
+ {
+   "Date": "29/03/2020",
+   "Title": "Lockdown eased",
+   "Annotation": "Lockdown is now being eased again, despite [x] local authorities having case rates that are higher than those that saw Leicester and Manchester enter local lockdown.",
+   "LA-marker": "",
+   "LA-annotation": ""
+ }
+]

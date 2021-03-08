@@ -2,13 +2,28 @@
 @import "mq";
 @import "palette";
 @import "enhancer";
+@import "scrolly";
 
 .interactive-atom {
     margin: 0;
     padding: 0;
+
+    background: white;
+}
+
+.gv-date{
+	font-size: 24px;
 }
 
 .gv-svg{
 	position: absolute;
 	left: 0;
+}
+
+.gv-annotation-text{
+	font-size: 14px;
+}
+
+.gv-tick{
+	font-size: 12px;
 }
