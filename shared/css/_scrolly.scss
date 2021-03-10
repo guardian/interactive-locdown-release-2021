@@ -63,14 +63,19 @@
     position: absolute;
     top: 0;
     pointer-events: none;
+    
 }
 
 .scroll-text__div {
     max-width: 620px;
     width: 100%;
+    box-sizing: border-box;
     @include mq(desktop) {
         width: 620px;
     }
+
+  
+
     margin-left: 0px;
     background-color: #fff;
     border: 2px solid #000;
@@ -91,9 +96,13 @@
 
 .scroll-text__inner {
     box-sizing: border-box;
-    height: 100vh;
+    height: 120vh;
     position: relative;
     z-index: 100;
+
+    &:last-of-type {
+        visibility: hidden;
+    }
 
     .transparent-until-active & {
         opacity: 0.25;

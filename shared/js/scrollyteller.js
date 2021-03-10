@@ -12,9 +12,8 @@ class ScrollyTeller {
         this.triggerPoints = [];
         this.textBoxes = [].slice.apply(this.scrollText.querySelectorAll(".scroll-text__inner"));
         this.transparentUntilActive = config.transparentUntilActive;
-        this.callback = config.callback;
 
-        this.scrollWrapper.style.height = this.textBoxes.length * 100 + "vh";
+        this.scrollWrapper.style.height = this.textBoxes.length * 120 + "vh";
 
         if(this.transparentUntilActive) {
             config.parent.classList.add("transparent-until-active");
@@ -25,9 +24,12 @@ class ScrollyTeller {
         this.onGradualChange = f
     }
 
+    overall (f) {
+        this.onOverallProgress = f
+    }
+
     checkScroll() {
         if(this.lastScroll !== window.pageYOffset) {
-
             const bbox = this.scrollText.getBoundingClientRect();
     
             if(!supportsSticky) {
@@ -48,12 +50,32 @@ class ScrollyTeller {
     
             if(bbox.top < (window.innerHeight*(this.triggerTop)) && bbox.bottom > window.innerHeight/2) { 
                 const i = Math.floor(Math.abs(bbox.top - (window.innerHeight*(this.triggerTop)))/bbox.height*this.textBoxes.length);
-    
-                const progress = -bbox.top/(bbox.height - window.innerHeight)
 
-                if(progress >= 0) {
-                    this.onGradualChange(progress)
+                const overallP = (bbox.top - window.innerHeight)/bbox.height*(-1)
+
+                this.onOverallProgress(overallP)
+    
+                try {
+
+                    const lastBox = this.textBoxes.slice().reverse().find( el => el.getBoundingClientRect().top < window.innerHeight*this.triggerTop )
+                    const nextBox = this.textBoxes.find( el => el.getBoundingClientRect().top > window.innerHeight*this.triggerTop )
+
+                //console.log(lastBox.textContent.trim(), nextBox.textContent.trim())
+
+                    const progress = (window.innerHeight*this.triggerTop - lastBox.getBoundingClientRect().top)/( nextBox.getBoundingClientRect().top - lastBox.getBoundingClientRect().top )//-bbox.top/(bbox.height - window.innerHeight)
+
+                    //console.log(progress)
+
+                    this.onGradualChange(progress, i)
+                    
+
+                } catch(err) {
+                    console.log(err)
                 }
+
+                // if(progress >= 0) {
+                //     this.onGradualChange(progress)
+                // }
 
                 if(i !== this.lastI) {
                     this.lastI = i; 
@@ -78,13 +100,9 @@ class ScrollyTeller {
     }
 
     doScrollAction(i) {
-        console.log('paso por aqui ' + i)
-        this.callback(i)
         const trigger = this.triggerPoints.find(d => d.num === i+1);
         if(trigger) {
             trigger.do();
-
-            
         }
     }
 

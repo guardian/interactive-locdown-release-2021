@@ -1,0 +1,96 @@
+@import "fonts";
+@import "mq";
+@import "palette";
+// @import "enhancer";
+@import "scrolly";
+
+.interactive-atom {
+    margin: 0;
+    padding: 0;
+}
+
+.swarm-svg {
+    width: 100%;
+    max-width: 1260px;
+    overflow: visible !important;
+    //background: #f6f6f6;
+    overflow: visible;
+
+    display: block;
+    margin-bottom: 24px;
+}
+
+.swarm-mini-chart {
+    width: 100%;
+    max-width: 1260px;
+    height: 100px;
+}
+
+.swarm-mini-line {
+    stroke: $news-red;
+    fill: none;
+}
+
+.swarm-dot {
+    fill: #dcdcdc;
+    //fill-opacity: 0.8;
+
+    stroke: #767676;
+    stroke-width: 0.75;
+
+    transition: fill 0.2s linear;
+
+    &.swarm-dot--hl {
+        fill: $news-red;
+        stroke: #121212;
+    }
+
+    &.swarm-dot--highlight {
+        //stroke: #121212;
+        stroke-width: 2;
+        fill: none;
+    }
+}
+
+.swarm-scale {
+    stroke: #dcdcdc;
+    stroke-width: 1.5;
+}
+
+.swarm-scalelabel {
+    @include fs-textSans(3);
+    color: #767676;
+    text-anchor: middle;
+}
+
+.swarm-date {
+    @include fs-header(4);
+    position: absolute;
+    top: 6px;
+    left: 10px;
+}
+
+.swarm-wrapper {
+    position: relative;
+    top: 100px;
+}
+
+.swarm-label {
+    @include fs-textSans(3);
+    text-anchor: middle;
+    stroke: white;
+    paint-order: stroke;
+    stroke-width: 3;
+    stroke-opacity: 0.9;
+}
+
+.overall-progress {
+	position: fixed;
+	bottom: 0;
+	height: 7px;
+    width: 0;
+    left: 0;
+	background: #c70000;
+    z-index: 2000;
+    transition: opacity 0.2s linear;
+}
