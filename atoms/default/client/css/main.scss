@@ -1,7 +1,7 @@
 @import "fonts";
 @import "mq";
 @import "palette";
-// @import "enhancer";
+@import "enhancer";
 @import "scrolly";
 
 .interactive-atom {
@@ -35,14 +35,19 @@
     fill: #dcdcdc;
     //fill-opacity: 0.8;
 
-    stroke: #767676;
+    stroke: #999;
     stroke-width: 0.75;
 
-    transition: fill 0.2s linear;
+    transition: fill 0.2s linear, stroke 0.2s linear;
 
     &.swarm-dot--hl {
         fill: $news-red;
         stroke: #121212;
+    }
+
+    &.swarm-dot--semihl {
+        fill: #ffbac8;
+        stroke: #767676;
     }
 
     &.swarm-dot--highlight {
@@ -63,25 +68,58 @@
     text-anchor: middle;
 }
 
+
 .swarm-date {
     @include fs-header(4);
     position: absolute;
+   
+    top: 0;
+    left: 0;
+
+    @include mq($from: desktop) {
     top: 6px;
-    left: 10px;
+    //left: 10px;
+    }
 }
 
 .swarm-wrapper {
     position: relative;
-    top: 100px;
+
+    top: 4vh;
+
+    padding-top: 52px;
+
+    padding-bottom: 48px;
+
+    @include mq($from: desktop) {
+        top: 75px;
+        padding-bottom: 32px;
+    }
+
+}
+
+.swarm-labeltext {
+
+    @include fs-textSans(3);
+    text-anchor: middle;
+    stroke-linejoin: round;
+
+    &.swarm-labeltext--white {
+        stroke: white;
+        fill: none;
+        stroke-width: 4;
+    }
+
 }
 
 .swarm-label {
-    @include fs-textSans(3);
-    text-anchor: middle;
-    stroke: white;
-    paint-order: stroke;
-    stroke-width: 3;
-    stroke-opacity: 0.9;
+   
+    transition: opacity 0.2s linear;
+    opacity: 0;
+
+    &.swarm-label--shown {
+        opacity: 1;
+    }
 }
 
 .overall-progress {
@@ -93,4 +131,98 @@
 	background: #c70000;
     z-index: 2000;
     transition: opacity 0.2s linear;
+}
+
+.swarm-natl {
+    position: absolute;
+    top: 10px;
+    left: 142px;
+    @include fs-textSans(2);
+    display: inline-block;
+    background: rgba($highlight-yellow, 0.8);
+    color: #121212;
+    padding: 1.5px 5px;
+}
+
+.swarm-effect-label {
+    @include fs-header(2);
+    fill: #bdbdbd;
+
+    &.swarm-effect-label--right {
+        text-anchor: end;
+    }
+}
+
+.swarm-arrow {
+    stroke: #bdbdbd;
+    stroke-width: 1.5;
+}
+
+@keyframes hover-left {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(15px);
+    }
+    
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes hover-right {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(15px);
+    }
+    
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.swarm-arrowg {
+    opacity: 0;
+    transition: opacity 0.4s linear;
+
+    &.swarm-arrowg--shown {
+        opacity: 1;
+    }
+
+    @include mq($until: desktop) {
+        display: none;
+    }
+}
+
+.swarm-arrow-innerg {
+    //animation: hover-left 1.6s ease-in-out 0s;
+    animation-name: hover-left;
+    animation-duration: 1.6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+
+.swarm-arrow-innerg--right {
+    animation-name: hover-right;
+    animation-duration: 1.6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+
+.day {
+    //background: yellow;
+    text-align: right;
+    margin-right: 2px;
+    display: inline-block;
+    width: 27px;
+}
+
+.month {
+    //background: lightblue;
+    //display: inline-block;
 }

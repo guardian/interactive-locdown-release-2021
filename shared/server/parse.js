@@ -2,7 +2,11 @@ import fs from 'fs'
 import sync from 'csv-parse/lib/sync'
 import _ from 'lodash'
 
+import moment from 'moment'
+
 const data = sync(fs.readFileSync('shared/server/cases.csv'), { columns : true })
+
+const dates = JSON.parse(fs.readFileSync('shared/server/dates.json'))
 
 const format = str => {
     return str.slice(-4) + '-' + str.slice(3, 5) + '-' + str.slice(0, 2)
@@ -14,11 +18,17 @@ const out = _(data)
 
         const pop = Number(arr[0].Population)
 
-        const cases = {}
+        const cases = []
 
-        arr.forEach( o => {
+        arr
+        .filter( o => moment(o.date, 'DD/MM/YYYY').diff(moment('28-02-2020', 'DD-MM-YYYY'), 'days') >= 0)
+        .forEach( o => {
 
-            cases[format(o.date)] = Number(o.newCasesBySpecimenDateRollingRate)
+            console.log(o.date)
+
+            cases.push(Number(o.newCasesBySpecimenDateRollingRate))   
+
+            //cases[format(o.date)] = Number(o.newCasesBySpecimenDateRollingRate)
         })
 
         return {
@@ -31,6 +41,16 @@ const out = _(data)
     .map( t => {
 
         return Object.assign({}, t[1], { name : t[0] })
+
+    } )
+    .orderBy( o => {
+
+        return _.flattenDeep(dates.map( o => {
+            return [
+                o['LA-highlight'],
+                o['LA-label']
+            ]
+        })).indexOf( o.name ) >= 0 ? 1 : -1
 
     } )
     .valueOf()

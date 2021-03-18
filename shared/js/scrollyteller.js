@@ -1,4 +1,5 @@
-import { supportsSticky } from "./util.js"
+import { sum, supportsSticky } from "./util.js"
+
 
 class ScrollyTeller {
     constructor(config) {
@@ -13,7 +14,11 @@ class ScrollyTeller {
         this.textBoxes = [].slice.apply(this.scrollText.querySelectorAll(".scroll-text__inner"));
         this.transparentUntilActive = config.transparentUntilActive;
 
-        this.scrollWrapper.style.height = this.textBoxes.length * 120 + "vh";
+        this.scrollWrapper.style.height = this.textBoxes.map( el => el.getBoundingClientRect().height ).reduce(sum, 0) + 'px'
+        
+        this.on = true
+
+        //.length * 120 + "vh";
 
         if(this.transparentUntilActive) {
             config.parent.classList.add("transparent-until-active");
@@ -28,8 +33,12 @@ class ScrollyTeller {
         this.onOverallProgress = f
     }
 
+    toggle () {
+        this.on = !this.on
+    }
+
     checkScroll() {
-        if(this.lastScroll !== window.pageYOffset) {
+        if(this.on && this.lastScroll !== window.pageYOffset) {
             const bbox = this.scrollText.getBoundingClientRect();
     
             if(!supportsSticky) {
@@ -49,7 +58,19 @@ class ScrollyTeller {
             }
     
             if(bbox.top < (window.innerHeight*(this.triggerTop)) && bbox.bottom > window.innerHeight/2) { 
-                const i = Math.floor(Math.abs(bbox.top - (window.innerHeight*(this.triggerTop)))/bbox.height*this.textBoxes.length);
+
+                let i = 0
+
+                const neg = Math.floor(Math.abs(bbox.top - (window.innerHeight*(this.triggerTop))))
+
+                i = this.textBoxes.findIndex( (el, j,arr) => {
+
+                    const soFar = arr.slice(0, j).map( el => el.getBoundingClientRect().height ).reduce(sum, 0)
+                    return soFar > neg
+
+                } ) - 1
+
+                //console.log(i)
 
                 const overallP = (bbox.top - window.innerHeight)/bbox.height*(-1)
 
@@ -64,9 +85,10 @@ class ScrollyTeller {
 
                     const progress = (window.innerHeight*this.triggerTop - lastBox.getBoundingClientRect().top)/( nextBox.getBoundingClientRect().top - lastBox.getBoundingClientRect().top )//-bbox.top/(bbox.height - window.innerHeight)
 
-                    //console.log(progress)
+                    const abs = window.innerHeight*this.triggerTop - lastBox.getBoundingClientRect().top
+                    const total = nextBox.getBoundingClientRect().top - lastBox.getBoundingClientRect().top
 
-                    this.onGradualChange(progress, i)
+                    this.onGradualChange(progress, i, abs, total)
                     
 
                 } catch(err) {

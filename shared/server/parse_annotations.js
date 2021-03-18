@@ -6,12 +6,18 @@ const format = str => {
 }
 
 const data = sync(fs.readFileSync('shared/server/dates.csv'), { columns : true })
-    .slice(1)
+    //.slice(1)
     .map( o => {
 
         const newDate = format(o.Date)
 
-        return Object.assign({}, o, { Date : newDate })
+        const laLabel = o['LA-label'].split(',')
+            .map( str => str.trim() )
+
+        const laHl = o['LA-highlight'].split(',')
+            .map( str => str.trim() )
+
+        return Object.assign({}, o, { Date : newDate, 'LA-label' : laLabel, 'LA-highlight' : laHl })
 
     } )
 
