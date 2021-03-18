@@ -12,6 +12,14 @@ const format = str => {
     return str.slice(-4) + '-' + str.slice(3, 5) + '-' + str.slice(0, 2)
 }
 
+const cleanName = str => {
+    if(str === 'Kingston upon Hull, City of') {
+        return 'Hull'
+    }
+
+    return str
+}
+
 const out = _(data)
     .groupBy('areaName')
     .mapValues( arr => {
@@ -40,7 +48,7 @@ const out = _(data)
     .toPairs()
     .map( t => {
 
-        return Object.assign({}, t[1], { name : t[0] })
+        return Object.assign({}, t[1], { name : cleanName(t[0]) })
 
     } )
     .orderBy( o => {

@@ -355,18 +355,20 @@
   {
     "Date": "2021-03-13",
     "Title": "Lockdown eased in England",
-    "Annotation": "Lockdown is now being eased again in all parts of the UK, with English schools having been re-opened earlier this month. The latest data shows that five local authorities have case rates that are higher than 135 per 100,000, the level at which Leicester entered local lockdown last year.",
+    "Annotation": "Lockdown is now being eased again in all parts of the UK, with English schools having been re-opened earlier this month. The latest data shows that <strong>seven local authorities</strong> have case rates that are higher than 135 per 100,000, the level at which Leicester entered local lockdown last year.",
     "LA-label": [
       "Corby",
-      "Barnsley",
-      "Kingston upon Hull",
-      "City of"
+      "Hull",
+      "Barnsley"
     ],
     "LA-highlight": [
       "Corby",
+      "Hull",
       "Barnsley",
-      "Kingston upon Hull",
-      "City of"
+      "Merthyr Tydfil",
+      "Redditch",
+      "North East Lincolnshire",
+      "Bradford"
     ]
   }
 ]
