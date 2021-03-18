@@ -429,5 +429,9 @@ date,areaType,areaCode,areaName,Lockdown?,Annotation,newCasesBySpecimenDateRolli
 05/03/2021,overview,K02000001,United Kingdom,Lockdown,,60.5
 06/03/2021,overview,K02000001,United Kingdom,Lockdown,,60
 07/03/2021,overview,K02000001,United Kingdom,Lockdown,,59.4
-08/03/2021,overview,K02000001,United Kingdom,Lockdown,,59.2
-09/03/2021,overview,K02000001,United Kingdom,Lockdown,,58.7
+08/03/2021,overview,K02000001,United Kingdom,Lockdown,,59.3
+09/03/2021,overview,K02000001,United Kingdom,Lockdown,,58.8
+10/03/2021,overview,K02000002,United Kingdom,Lockdown,,59
+11/03/2021,overview,K02000003,United Kingdom,Lockdown,,59.1
+12/03/2021,overview,K02000004,United Kingdom,Lockdown,,59.6
+13/03/2021,overview,K02000004,United Kingdom,Lockdown,,59.1
