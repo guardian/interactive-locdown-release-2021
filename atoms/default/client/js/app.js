@@ -37,7 +37,7 @@ rawNational.forEach((o, i) => {
     national[days[i]] = o
 })
 
-const isMobile = window.matchMedia('(max-width: 739px').matches
+const isMobile = window.matchMedia('(max-width: 739px)').matches
 
 const draw = () => {
 

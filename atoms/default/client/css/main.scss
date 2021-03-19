@@ -189,7 +189,7 @@
     transition: opacity 0.4s linear;
 
     &.swarm-arrowg--shown {
-        opacity: 1;
+        opacity: 0;
     }
 
     @include mq($until: desktop) {
