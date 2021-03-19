@@ -37,8 +37,6 @@ rawNational.forEach((o, i) => {
     national[days[i]] = o
 })
 
-console.log(national)
-
 const isMobile = window.matchMedia('(max-width: 739px').matches
 
 const draw = () => {
@@ -374,7 +372,9 @@ const draw = () => {
 
                     date = moment(dates[i].Date, 'YYYY-MM-DD').add(n, 'days').format('YYYY-MM-DD')
                     
-                    if(data[0].cases[date]) {
+                    //console.log(`advancing ${n} days (DATE: ${date})`)
+
+                    if(data[0].cases[date] !== undefined) {
                         updateDate()
                     }
 
