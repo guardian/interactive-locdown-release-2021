@@ -394,7 +394,7 @@ const draw = () => {
 
             if(data[0].cases[o.Date]) {
 
-            if(o.Date === dates[i-1].Date) {
+            if(i > 0 && o.Date === dates[i-1].Date) {
                 return null // DO NOTHING
             }
 
@@ -414,9 +414,9 @@ const draw = () => {
 
     } )
 
-    // $('.scroll-wrapper').addEventListener('click', () => {
-    //     scrolly.toggle()
-    // })
+    $('.scroll-wrapper').addEventListener('click', () => {
+        scrolly.toggle()
+    })
 
     wait(400).then( () => scrolly.watchScroll() )
 
